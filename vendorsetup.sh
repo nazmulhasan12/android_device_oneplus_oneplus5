@@ -21,5 +21,5 @@
 # function: add_lunch_combo generic-eng
 
 add_lunch_combo omni_oneplus5-user
-add_lunch_combo omni_oneplus5-userdebug
+add_lunch_combo nitrogen_dumpling-userdebug
 add_lunch_combo omni_oneplus5-eng
