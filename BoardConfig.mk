@@ -18,7 +18,7 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-BOARD_PATH := device/oneplus/oneplus5
+BOARD_PATH := device/oneplus/dumpling
 
 TARGET_NO_BOOTLOADER := true
 TARGET_OTA_ASSERT_DEVICE := oneplus5,oneplus5t,cheeseburger,dumpling
@@ -64,7 +64,7 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
-TARGET_KERNEL_CONFIG := omni_oneplus5_defconfig
+TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
 
 # partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
