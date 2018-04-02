@@ -19,11 +19,11 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-$(call inherit-product, device/oneplus/oneplus5/hidl.mk)
-$(call inherit-product, vendor/oneplus/oneplus5/device-vendor.mk)
-$(call inherit-product, vendor/omni/config/phone-xxhdpi-4096-dalvik-heap.mk)
+$(call inherit-product, device/oneplus/dumpling/hidl.mk)
+$(call inherit-product, vendor/oneplus/dumpling/device-vendor.mk)
+$(call inherit-product, vendor/nitrogen/config/phone-xxhdpi-4096-dalvik-heap.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus5/overlay/common
+DEVICE_PACKAGE_OVERLAYS += device/oneplus/dumpling/overlay/common
 
 PRODUCT_PACKAGES += \
     omni_charger_res_images
@@ -85,12 +85,12 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/oneplus/oneplus5/prebuilt/system,system) \
-    $(call find-copy-subdir-files,*,device/oneplus/oneplus5/prebuilt/root,root)
+    $(call find-copy-subdir-files,*,device/oneplus/dumpling/prebuilt/system,system) \
+    $(call find-copy-subdir-files,*,device/oneplus/dumpling/prebuilt/root,root)
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus5/twrp/twrp.fstab:recovery/root/etc/twrp.fstab
+    device/oneplus/dumpling/twrp/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_AAPT_CONFIG := xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -162,12 +162,12 @@ PRODUCT_PACKAGES += \
     libgnss
 
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus5/gps/etc/flp.conf:system/vendor/etc/flp.conf \
-    device/oneplus/oneplus5/gps/etc/izat.conf:system/vendor/etc/izat.conf \
-    device/oneplus/oneplus5/gps/etc/lowi.conf:system/vendor/etc/lowi.conf \
-    device/oneplus/oneplus5/gps/etc/sap.conf:system/vendor/etc/sap.conf \
-    device/oneplus/oneplus5/gps/etc/apdr.conf:system/vendor/etc/apdr.conf \
-    device/oneplus/oneplus5/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf
+    device/oneplus/dumpling/gps/etc/flp.conf:system/vendor/etc/flp.conf \
+    device/oneplus/dumpling/gps/etc/izat.conf:system/vendor/etc/izat.conf \
+    device/oneplus/dumpling/gps/etc/lowi.conf:system/vendor/etc/lowi.conf \
+    device/oneplus/dumpling/gps/etc/sap.conf:system/vendor/etc/sap.conf \
+    device/oneplus/dumpling/gps/etc/apdr.conf:system/vendor/etc/apdr.conf \
+    device/oneplus/dumpling/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf
 
 # IPv6
 PRODUCT_PACKAGES += \
@@ -176,9 +176,9 @@ PRODUCT_PACKAGES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus5/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
-    device/oneplus/oneplus5/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl \
-    device/oneplus/oneplus5/keylayout/synaptics.kl:system/usr/keylayout/synaptics_s3320.kl
+    device/oneplus/dumpling/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
+    device/oneplus/dumpling/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl \
+    device/oneplus/dumpling/keylayout/synaptics.kl:system/usr/keylayout/synaptics_s3320.kl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -258,8 +258,8 @@ PRODUCT_PACKAGES += \
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus5/seccomp_policy/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-    device/oneplus/oneplus5/seccomp_policy/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
+    device/oneplus/dumpling/seccomp_policy/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+    device/oneplus/dumpling/seccomp_policy/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
@@ -310,16 +310,14 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
-
 # Temporary handling
 #
 # Include config.fs get only if legacy device/qcom/<target>/android_filesystem_config.h
 # does not exist as they are mutually exclusive.  Once all target's android_filesystem_config.h
 # have been removed, TARGET_FS_CONFIG_GEN should be made unconditional.
 DEVICE_CONFIG_DIR := $(dir $(firstword $(subst ]],, $(word 2, $(subst [[, ,$(_node_import_context))))))
-ifeq ($(wildcard device/oneplus/oneplus5/android_filesystem_config.h),)
-  TARGET_FS_CONFIG_GEN := device/oneplus/oneplus5/config.fs
+ifeq ($(wildcard device/oneplus/dumpling/android_filesystem_config.h),)
+  TARGET_FS_CONFIG_GEN := device/oneplus/dumpling/config.fs
 else
   $(warning **********)
   $(warning TODO: Need to replace legacy $(DEVICE_CONFIG_DIR)android_filesystem_config.h with config.fs)
