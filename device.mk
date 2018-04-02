@@ -20,7 +20,7 @@
 # product configuration (apps).
 #
 $(call inherit-product, device/oneplus/dumpling/hidl.mk)
-$(call inherit-product, vendor/oneplus/dumpling/device-vendor.mk)
+$(call inherit-product, vendor/oneplus/dumpling/dumpling-vendor.mk)
 $(call inherit-product, vendor/nitrogen/config/phone-xxhdpi-4096-dalvik-heap.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/oneplus/dumpling/overlay/common
