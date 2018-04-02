@@ -19,7 +19,7 @@
 set -e
 
 # Required!
-DEVICE=oneplus5
+DEVICE=dumpling
 VENDOR=oneplus
 
 INITIAL_COPYRIGHT_YEAR=2017
@@ -41,7 +41,7 @@ fi
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
 # Copyright headers and guards
-write_headers "oneplus5 oneplus5t"
+write_headers "oneplus5 dumpling oneplus5t"
 
 # The standard blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
